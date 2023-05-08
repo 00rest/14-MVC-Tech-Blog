@@ -1,0 +1,66 @@
+body {
+    background-color: bisque;
+}
+
+.menu{
+    background: rgb(38, 1, 1);
+    margin-bottom: 1rem;
+}
+
+h3{
+    font-weight: 800;
+}
+
+a{
+    font-size: large;
+    color: bisque;
+}
+
+.calloutbox{
+    border-radius: 10px;
+    box-shadow: 7px 7px gray;
+    padding: 0;
+    background-color: bisque;
+    text-align: center;
+}
+
+.grid-container{
+    background: bisque;
+}
+
+.card-head{
+    display: inline;
+}
+
+.date{
+    font-size: small;
+}
+
+.card-space{
+    padding: 20px;
+}
+
+.button-shape{
+    border-radius: 5px;
+}
+
+.textbox-border{
+border: solid 2px rgb(0, 132, 255);
+}
+
+.textbox-border-size{
+    height: 70px;
+}
+
+.new-post-btn{
+    background: rgb(38, 1, 1);
+    font-weight: bolder;
+}
+
+.dashboard-post{
+    padding: 15px;
+}
+
+.margin-btn{
+    margin-top: 10px;
+}
