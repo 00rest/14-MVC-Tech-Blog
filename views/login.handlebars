@@ -1,41 +1,57 @@
-<div class="row">
-  <div class="col-md-6">
-    <h2>Login</h2>
-
-    <form class="form login-form">
-      <div class="form-group">
-        <label for="email-login">email:</label>
-        <input class="form-input" type="text" id="email-login" />
-      </div>
-      <div class="form-group">
-        <label for="password-login">password:</label>
-        <input class="form-input" type="password" id="password-login" />
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary" type="submit">login</button>
-      </div>
-    </form>
+<div class="card margin-y">
+  <div class="card-divider grid-x">
+    <div class="small-12">Login</div>
   </div>
-  <div class="col-md-6">
-    <h2>Signup</h2>
+  <div class="card-section cell">
+    <div class="grid-x">
 
-    <form class="form signup-form">
-      <div class="form-group">
-        <label for="name-signup">name:</label>
-        <input class="form-input" type="text" id="name-signup" />
+      <label class="large-12 cell">
+        Email
+        <input type="text" id="email-login">
+      </label>
+
+      Password
+      <label class="large-12 cell">
+        <input type="password" id="password-login">
+      </label>
+
+      <br>
+      <div class="expanded button-group">
+        <button type="submit" class="secondary button button-shape">Login!</button>
       </div>
-      <div class="form-group">
-        <label for="email-signup">email:</label>
-        <input class="form-input" type="text" id="email-signup" />
+
+    </div>
+  </div>
+</div>
+
+<div class="card margin-y">
+  <div class="card-divider grid-x">
+    <div class="small-12">Signup</div>
+  </div>
+  <div class="card-section cell">
+    <div class="grid-x">
+
+      <label class="large-12 cell">
+        Username
+        <input type="text" id="name-signup">
+      </label>
+
+      <label class="large-12 cell">
+        Email
+        <input type="text" id="email-signup">
+      </label>
+
+      Password
+      <label class="large-12 cell">
+        <input type="password" id="password-signup">
+      </label>
+
+      <br>
+      <div class="expanded button-group">
+        <button type="submit" class="secondary button button-shape">Sign Up!</button>
       </div>
-      <div class="form-group">
-        <label for="password-signup">password:</label>
-        <input class="form-input" type="password" id="password-signup" />
-      </div>
-      <div class="form-group">
-        <button class="btn btn-primary" type="submit">signup</button>
-      </div>
-    </form>
+
+    </div>
   </div>
 </div>
 
