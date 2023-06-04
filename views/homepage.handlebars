@@ -1,9 +1,8 @@
-
 <!-- Loop over each object in the projects array -->
 {{#each posts as |post| }}
 <div class="card margin-y">
   <div class="card-divider grid-x">
-    <a class="small-6" onclick="commentBox({{post_id}})">Title</a>
+    <a class="small-6" onclick="commentBox({{post_id}})">{{title}}</a>
     <div class="small-6 text-right date">Posted by {{post.user.user_name}} on {{format_date post.date_created}}</div>
   </div>
   <div class="card-section">
@@ -20,28 +19,23 @@
 </div>
 {{/each}}
 
-<div id={{post_id}}></div>
-
-{{/each}}
-
-
-
-
-<div class="card margin-y">
-  <div class="card-section cell">
-    <div class="grid-x">
-      <div class="large-12 cell">
-        <input class="textbox-border" type="text">
-      </div>
-      <br>
-      <div class="expanded button-group">
-        <a class="secondary button button-shape">Submit</a>
+<div id={{post_id}} class="hide">
+  <div class="card margin-y">
+    <div class="card-section cell">
+      <div class="grid-x">
+        <div class="large-12 cell">
+          <input class="textbox-border" type="text" id="txt-{{post_id}}">
+        </div>
+        <br>
+        <div class="expanded button-group">
+          <a class="secondary button button-shape" onclick="comentHandler({{post_id}})">Submit</a>
+        </div>
       </div>
     </div>
   </div>
-
 </div>
 
-<h1 id="orest"></h1>
+{{/each}}
+
 
 <script src="./js/homepage.js"></script>
