@@ -50,7 +50,7 @@ WHEN you are idle on the site for more than a set time
 THEN you are able to view comments but you are prompted to log in again before you can add, update, or delete comments
 ```
 
-![screenshot](./Assets/screenshot.jpg)
+![screenshot](./assets/screenshot.jpg)
 
 [Live Website](https://mvctech-blog14.herokuapp.com/)
 
