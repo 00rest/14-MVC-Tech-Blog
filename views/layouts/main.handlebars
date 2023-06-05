@@ -16,16 +16,18 @@
       <header class="grid-x grid-padding-x grid-padding-y menu">
         <div class="large-4 cell">
           <ul class="menu">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">Dashboard</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/dashboard">Dashboard</a></li>
             
             {{#if logged_in}}
-            <li><a href="#">Logout</a></li>
+            <li><a id="logout">Logout</a></li>
+            <li><a>Welcome, {{user_name}}</a></li>
             {{else}}
-            <li><a href="#">Login</a></li>
+            <li><a href="/login">Login</a></li>
             {{/if}}
 
           </ul>
+
           <div class="callout calloutbox">
             <h3>The Tech Blog</h3>
           </div>

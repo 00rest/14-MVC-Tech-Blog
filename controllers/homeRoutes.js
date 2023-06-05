@@ -25,15 +25,14 @@ router.get('/', async (req, res) => {
       ],
     });
 
-    //    res.status(200).json(postData);
-
-    //    Serialize data so the template can read it
+    // Serialize data so the template can read it
     const posts = postData.map((post) => post.get({ plain: true }));
 
-    //    Pass serialized data and session flag into template
+    // Pass serialized data and session flag into template
     res.render('homepage', {
       posts,
-      //logged_in: req.session.logged_in 
+      logged_in: req.session.logged_in,
+      user_name: req.session.user_name
     });
   } catch (err) {
     res.status(500).json(err);
@@ -41,11 +40,11 @@ router.get('/', async (req, res) => {
 });
 
 
-// Comment on a post **NEEDS AUTH!!*** (WORKS)
-router.post('/comment/:id', async (req, res) => {
+// Comment on a post (WORKS)
+router.post('/comment/:id', withAuth, async (req, res) => {
   try {
     //console.log(req.session.user_id);
-    Comment.create({ post_id: req.params.id, ...req.body, user_id: 3 })
+    Comment.create({ post_id: req.params.id, ...req.body, user_id: req.session.user_id })
       .then((result) => res.status(200).json(result))
 
   } catch (err) {
@@ -54,26 +53,36 @@ router.post('/comment/:id', async (req, res) => {
   }
 });
 
-// Use withAuth middleware to prevent access to route
-router.get('/dashboard', async (req, res) => {
+// Get all posts speciffic user and render homepage (WORKS)
+router.get('/dashboard', withAuth, async (req, res) => {
+  console.log(req.session.user_name);
   try {
-    // Find the logged in user based on the session ID
-    const userData = await User.findByPk(req.session.user_id, {
-      attributes: { exclude: ['password'] },
-      include: [{ model: Project }],
+    const postData = await Post.findAll({
+      include: [
+        {
+          model: User,
+          attributes: ['user_name',],
+        },
+      ],
+      where: {
+        user_id: req.session.user_id,
+      },
     });
 
-    const user = userData.get({ plain: true });
+    // Serialize data so the template can read it
+    const posts = postData.map((post) => post.get({ plain: true }));
 
+    // Pass serialized data and session flag into template
     res.render('dashboard', {
-      ...user,
-      logged_in: true
+      posts,
+      logged_in: req.session.logged_in,
+      user_name: req.session.user_name
     });
-  } catch (err) {
-    res.status(500).json(err);
   }
+  catch (err) { res.status(500).json(err) }
 });
 
+// Login rediretion (WORKS)
 router.get('/login', (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {

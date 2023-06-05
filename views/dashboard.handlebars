@@ -1,17 +1,79 @@
+{{#if posts}}
 {{#each posts as |post| }}
 
-<a href="#" class="card-divider grid-x button button-shape secondary dashboard-post">
+<a class="card-divider grid-x button button-shape secondary dashboard-post" onclick="inputBox({{post_id}})">
   <div class="medium-6 text-left">{{post.title}}</div>
   <div class="medium-6 text-right">{{format_date post.date_created}}</div>
 </a>
+<div id={{post_id}} class="hide">
+  <div class="card margin-y">
+    <div class="card-divider grid-x">
+      <div class="small-12">Edit {{post.title}} Post</div>
+    </div>
+    <div class="card-section cell">
+      <div class="grid-x">
 
+        <label class="large-12 cell">
+          Title
+          <input class="textbox-border" type="text" value="{{post.title}}" id="edit-title-{{post_id}}">
+        </label>
 
+        Content
+        <label class="large-12 cell">
+          <input class="textbox-border textbox-border-size" type="text" value="{{post.content}}" id="edit-content-{{post_id}}">
+        </label>
 
+        <br>
+        <div class="button-group stacked">
+          <a onclick="editPostHandler({{post_id}})" class="secondary button button-shape margin-btn">Update Post</a>
+          <a onclick="deletePostHandler({{post_id}})" class="alert button button-shape">Delete</a>
 
+        </div>
 
-
+      </div>
+    </div>
+  </div>
+</div>
 
 {{/each}}
+{{/if}}
+
+
+
+<div class="hide" id="new-post-box">
+  <div class="card margin-y">
+    <div class="card-divider grid-x">
+      <div class="small-12">Create New Post</div>
+    </div>
+    <div class="card-section cell">
+      <div class="grid-x">
+
+        <label class="large-12 cell">
+          Title
+          <input class="textbox-border" type="text" id="new-post-title">
+        </label>
+
+        Content
+        <label class="large-12 cell">
+          <input class="textbox-border textbox-border-size" type="text" id="new-post-content">
+        </label>
+
+        <br>
+        <div class="expanded button-group">
+          <a class="secondary button button-shape" onclick="newPostHandler()">Create</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="button-group grid-x align-center">
+  <a class="button button-shape new-post-btn medium-2" onclick="inputBox('new-post-box')">+ New Post</a>
+</div>
+
+
 
 
 

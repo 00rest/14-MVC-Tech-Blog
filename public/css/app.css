@@ -64,3 +64,8 @@ border: solid 2px rgb(0, 132, 255);
 .margin-btn{
     margin-top: 10px;
 }
+
+.login-a{
+    color:  rgb(38, 1, 1);
+    font-weight: bold;
+}

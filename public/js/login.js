@@ -1,3 +1,13 @@
+function hideLoginBox() {
+    document.getElementById('login-box').setAttribute("class", "hide");
+    document.getElementById('signup-box').setAttribute("class", "");
+};
+
+function hideSignupBox() {
+  document.getElementById('signup-box').setAttribute("class", "hide");
+  document.getElementById('login-box').setAttribute("class", "");
+};
+
 const loginFormHandler = async (event) => {
   event.preventDefault();
 
@@ -15,9 +25,10 @@ const loginFormHandler = async (event) => {
 
     if (response.ok) {
       // If successful, redirect the browser to the profile page
-      document.location.replace('/profile');
+      document.location.replace('/dashboard');
     } else {
-      alert(response.statusText);
+      alert('Incorrect email or password, please try again');
+
     }
   }
 };
@@ -25,19 +36,19 @@ const loginFormHandler = async (event) => {
 const signupFormHandler = async (event) => {
   event.preventDefault();
 
-  const name = document.querySelector('#name-signup').value.trim();
+  const user_name = document.querySelector('#name-signup').value.trim();
   const email = document.querySelector('#email-signup').value.trim();
   const password = document.querySelector('#password-signup').value.trim();
 
-  if (name && email && password) {
+  if (user_name && email && password) {
     const response = await fetch('/api/users', {
       method: 'POST',
-      body: JSON.stringify({ name, email, password }),
+      body: JSON.stringify({ user_name, email, password }),
       headers: { 'Content-Type': 'application/json' },
     });
 
     if (response.ok) {
-      document.location.replace('/profile');
+      document.location.replace('/dashboard');
     } else {
       alert(response.statusText);
     }
@@ -45,9 +56,9 @@ const signupFormHandler = async (event) => {
 };
 
 document
-  .querySelector('.login-form')
-  .addEventListener('submit', loginFormHandler);
+  .getElementById('login-btn')
+  .addEventListener('click', loginFormHandler);
 
 document
-  .querySelector('.signup-form')
-  .addEventListener('submit', signupFormHandler);
+  .getElementById('signup-btn')
+  .addEventListener('click', signupFormHandler);
